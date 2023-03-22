@@ -1,10 +1,17 @@
 import Head from 'next/head'
 import { Lato } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import {trpc} from '@/utils/trpc'
 
 const lato = Lato({ subsets: ['latin'], weight: '400' })
 
 export default function Home() {
+  const {data, isLoading} = trpc.hello.useQuery({text: 'client'})
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Head>
@@ -15,6 +22,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${lato.className}`}>
         <div>Which Pokemon is Rounder?</div>
+          <p>{data?.greeting}</p>
         <div className={styles.voting_section}>
           <div className={styles.vote_container} />
           <div className={styles.vote_tag}>Vs</div>
