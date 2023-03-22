@@ -1,0 +1,16 @@
+*.d.ts
+.DS_Store
+.editorconfig
+.git
+.github
+.gitignore
+.next
+.prettierignore
+.eslintrc.js
+.eslintrc.json
+next.config.js
+package-lock.json
+README.md
+tsconfig.json
+node_modules
+package.json
