@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white
+  color: white;
 }
 
 .voting_section {
@@ -14,14 +14,14 @@
   border: 1px solid white;
   border-radius: 4px;
   padding: 8px;
-  margin-top: 1rem
+  margin-top: 1rem;
 }
 
 .vote_container {
   width: 4rem;
-  background: pink
+  background: red;
 }
 
 .vote_tag {
-  padding: 8px
+  padding: 8px;
 }
