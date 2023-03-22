@@ -18,10 +18,12 @@
 }
 
 .vote_container {
-  width: 4rem;
-  background: red;
+  display: flex;
+  align-items: center;
 }
 
 .vote_tag {
   padding: 8px;
+  margin: 0 1rem;
+  border: 1px solid white;
 }
