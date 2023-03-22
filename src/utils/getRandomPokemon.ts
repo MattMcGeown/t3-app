@@ -1,4 +1,6 @@
-const MAX_DEX_ID = 5;
+'use client';
+
+const MAX_DEX_ID = 493;
 
 export const getRandomPokemon: (shouldSkip?: number) => number = (
   shouldSkip?: number
@@ -10,9 +12,9 @@ export const getRandomPokemon: (shouldSkip?: number) => number = (
   return getRandomPokemon(shouldSkip);
 };
 
-export const getOptionsForVote = () => {
-  const firstId = getRandomPokemon();
-  const secondId = getRandomPokemon(firstId);
+export const getOptionsForVote = async () => {
+  const firstId = await getRandomPokemon();
+  const secondId = await getRandomPokemon(firstId);
 
   return [firstId, secondId];
 };
