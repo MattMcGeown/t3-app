@@ -12,9 +12,9 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 8px;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .vote_container {
@@ -23,7 +23,8 @@
 }
 
 .vote_tag {
+  display: flex;
+  align-items: center;
   padding: 8px;
   margin: 0 1rem;
-  border: 1px solid white;
 }
