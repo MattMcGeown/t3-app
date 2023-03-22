@@ -17,11 +17,13 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
   const firstPokemon = trpc.getPokemonById.useQuery({ id: first });
   const secondPokemon = trpc.getPokemonById.useQuery({ id: second });
 
-  console.log(firstPokemon.data);
-
   if (!firstPokemon.data || !secondPokemon.data) {
     return <div>Loading...</div>;
   }
+
+  const handleImageClick = () => {
+    alert('TODO: onClick handler');
+  };
 
   return (
     <>
@@ -49,6 +51,7 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
               alt="poke"
               width={100}
               height={100}
+              onClick={handleImageClick}
             />
           </div>
           <div className={styles.vote_tag}>Vs</div>
@@ -58,6 +61,7 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
               alt="poke"
               width={100}
               height={100}
+              onClick={handleImageClick}
             />
           </div>
         </div>
