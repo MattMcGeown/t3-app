@@ -47,22 +47,24 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
         <div className={styles.voting_section}>
           <div className={styles.vote_container}>
             <Image
-              src={firstPokemon.data.sprites!.front_default ?? ''}
+              src={firstPokemon.data.sprites.front_default ?? ''}
               alt="poke"
               width={100}
               height={100}
               onClick={handleImageClick}
             />
+            <p className={styles.poke_name}>{firstPokemon.data.name}</p>
           </div>
           <div className={styles.vote_tag}>Vs</div>
           <div className={styles.vote_container}>
             <Image
-              src={secondPokemon.data.sprites!.front_default ?? ''}
+              src={secondPokemon.data.sprites.front_default ?? ''}
               alt="poke"
               width={100}
               height={100}
               onClick={handleImageClick}
             />
+            <p className={styles.poke_name}>{secondPokemon.data.name}</p>
           </div>
         </div>
       </main>
