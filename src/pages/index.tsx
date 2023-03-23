@@ -3,7 +3,7 @@ import { Lato } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import { getOptionsForVote } from '@/utils/getRandomPokemon';
 import { trpc } from '@/utils/trpc';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Image from 'next/image';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
@@ -13,13 +13,21 @@ interface HomeProps {
   second: number;
 }
 
-export const Home: FC<HomeProps> = ({ first, second }) => {
-  const firstPokemon = trpc.getPokemonById.useQuery({ id: first });
-  const secondPokemon = trpc.getPokemonById.useQuery({ id: second });
+export const Home: FC<HomeProps> = () => {
+  const [ids, setIds] = useState(() => getOptionsForVote());
+
+  const firstPokemon = trpc.getPokemonById.useQuery({ id: ids[0] });
+  const secondPokemon = trpc.getPokemonById.useQuery({ id: ids[1] });
 
   if (!firstPokemon.data || !secondPokemon.data) {
     return <div>Loading...</div>;
   }
+
+  const voteForPokemon = (selected: number) => {
+    // todo: fire mutation to persist changes
+
+    setIds(getOptionsForVote());
+  };
 
   const handleImageClick = () => {
     alert('TODO: onClick handler');
@@ -54,6 +62,12 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
               onClick={handleImageClick}
             />
             <p className={styles.poke_name}>{firstPokemon.data.name}</p>
+            <button
+              className={styles.btn}
+              onClick={() => voteForPokemon(1)}
+            >
+              Vote
+            </button>
           </div>
           <div className={styles.vote_tag}>Vs</div>
           <div className={styles.vote_container}>
@@ -65,22 +79,17 @@ export const Home: FC<HomeProps> = ({ first, second }) => {
               onClick={handleImageClick}
             />
             <p className={styles.poke_name}>{secondPokemon.data.name}</p>
+            <button
+              className={styles.btn}
+              onClick={() => voteForPokemon(1)}
+            >
+              Vote
+            </button>
           </div>
         </div>
       </main>
     </>
   );
 };
-
-export async function getServerSideProps() {
-  const [first, second] = await getOptionsForVote();
-
-  return {
-    props: {
-      first,
-      second,
-    },
-  };
-}
 
 export default Home;

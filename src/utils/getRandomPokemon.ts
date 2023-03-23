@@ -12,9 +12,9 @@ export const getRandomPokemon: (shouldSkip?: number) => number = (
   return getRandomPokemon(shouldSkip);
 };
 
-export const getOptionsForVote = async () => {
-  const firstId = await getRandomPokemon();
-  const secondId = await getRandomPokemon(firstId);
+export const getOptionsForVote = () => {
+  const firstId = getRandomPokemon();
+  const secondId = getRandomPokemon(firstId);
 
   return [firstId, secondId];
 };
